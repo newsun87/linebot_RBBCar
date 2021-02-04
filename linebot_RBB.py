@@ -128,7 +128,7 @@ def handle_message(event):
      config.write(open("linebot_cups.conf", "w"))
      device_num = config.get('device', userid)  
    if event.message.text == 'register': 
-     message = TextSendMessage(text = '請點選 https://liff.line.me/1654118646-kzqdwpx0')     
+     message = TextSendMessage(text = '請點選 https://liff.line.me/1654118646-GK30qepb')     
    elif event.message.text == 'w':         
      if device_num == '':
        message = TextSendMessage(text = '未註冊列印裝置....')
@@ -138,7 +138,7 @@ def handle_message(event):
       if device_num == '':
         message = TextSendMessage(text = '未註冊列印裝置....')
       else:
-        message = TextSendMessage(text = 'https://liff.line.me/1654118646-GYvYL8WQ')      
+        message = TextSendMessage(text = 'https://https://liff.line.me/1654118646-GK30qepb')      
    else:
      message = TextSendMessage(text = '我不懂你的意思...')
    line_bot_api.reply_message(event.reply_token, message)
