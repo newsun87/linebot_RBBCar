@@ -16,10 +16,14 @@
        }
      </style>
      <script> 
-		//var YourLiffAppId = '1654118646-GYvYL8WQ'	      
+		//var YourLiffAppId = '1654118646-GK30qepb'	      
         $(document).ready(function (){	
 			//初始 LIFF SDK
-          // initializeLiff(YourLiffAppId); 		         			
+           initializeLiff(YourLiffAppId); 
+           context = liff.getContext();
+           userid = context.userId;
+		   $('input[name="userid"]').val(userid);
+		    console.log(userid);        			
 		          
 			$('#Button_w').click(function (){ // 查詢用戶報到資料					
 				//alert("前進")
@@ -88,18 +92,10 @@
              }
            });
                    
-         });				
-                   
-         		
-						 
-           /*  context = liff.getContext();
-             userid = context.userId;
-		     $('input[name="userid"]').val(userid);
-		    console.log(userid); */			
-		
-		});		                
+         });
+        });		                
        
-     /*    function initializeLiff(myLiffId){
+        function initializeLiff(myLiffId){
             liff
                 .init({
                     liffId: myLiffId
@@ -116,7 +112,7 @@
 			if (!liff.isLoggedIn()) { // 如果Line用戶沒有登入，就必須事先登入
               	liff.login();
             } 				 
-        } */   
+        }    
 		 
 	 </script> 
 		
