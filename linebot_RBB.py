@@ -69,8 +69,7 @@ def register():
      #userid=request.form['userid']  
      device_list_str = iniContent[2]
      device_list = device_list_str.split(",") 
-     print(device_list)
-     
+     print(device_list)     
      device_opts_list = config.options("device")
      print('device_opts_list', device_opts_list)     
      #device_num = config.get('device', 'cups_id')
@@ -126,9 +125,11 @@ def handle_message(event):
    else:
      config.set('device', userid, " ")
      config.write(open("linebot_cups.conf", "w"))
-     device_num = config.get('device', userid)  
-   if event.message.text == 'register': 
-     message = TextSendMessage(text = '請點選 https://liff.line.me/1654118646-GK30qepb')     
+     device_num = config.get('device', userid)
+   if event.message.text == 'control': 
+     message = TextSendMessage(text = '請點選 https://liff.line.me/1654118646-GK30qepb')   
+   elif event.message.text == 'register': 
+     message = TextSendMessage(text = '請點選 https://liff.line.me/1654118646-qDxmMVz6')     
    elif event.message.text == 'w':         
      if device_num == '':
        message = TextSendMessage(text = '未註冊列印裝置....')
@@ -138,7 +139,7 @@ def handle_message(event):
       if device_num == '':
         message = TextSendMessage(text = '未註冊列印裝置....')
       else:
-        message = TextSendMessage(text = 'https://https://liff.line.me/1654118646-GK30qepb')      
+        message = TextSendMessage(text = 'https://liff.line.me/1654118646-GK30qepb')      
    else:
      message = TextSendMessage(text = '我不懂你的意思...')
    line_bot_api.reply_message(event.reply_token, message)
