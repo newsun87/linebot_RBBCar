@@ -57,7 +57,7 @@ def control():
 def register(): 
    global userid
    cupspath = os.path.dirname(os.path.realpath(__file__))
-   cfgpath = os.path.join(cupspath, 'linebot_cups.conf')
+   cfgpath = os.path.join(cupspath, 'linebot_RBBCar.conf')
    # 創建對象
    config = configparser.ConfigParser()
    # 讀取INI
