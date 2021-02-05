@@ -43,8 +43,9 @@ print(iniContent)
 app = Flask(__name__)
 
 @app.route('/',methods=['GET','POST'])    
-def video_cam():
+def control():
   global userid
+  print('userid', userid)
   RBBCarath = os.path.dirname(os.path.realpath(__file__))
   cfgpath = os.path.join(RBBCarath, 'linebot_RBBCar.conf')
    # 創建對象
