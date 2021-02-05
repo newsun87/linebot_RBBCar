@@ -1,5 +1,5 @@
 # -*- coding: utf-8
-from flask import Flask, request, abort, render_template
+from flask import Flask, request, abort, render_template, url_for
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -164,9 +164,9 @@ client = mqtt.Client()
 client.on_connect = on_connect  
 client.on_message = on_message  
 client.connect(iniContent[3], iniContent[4]) 
-client.loop_start()   
+client.loop_start() 
+  
 if __name__ == "__main__": 
-
  app.run(debug=True, host='0.0.0.0',port=8080)
  
      

@@ -30,8 +30,37 @@
             context = liff.getContext();
 			//userid = context.userId;
 			//$('input[name="userid"]').val(userid)
-			//console.log(userid)		
+			//console.log(userid)
+			$('#ButtonCUPSQuery').click(function (){ // 查詢用戶報到資料				
+				//$("#mainTable").show();
+				//$("#uploadfile").hide();			 
+				//$("#cpus_query").show();                          
+             });		
 		});
+		 function processFormData(){
+		 var cupsName = $("#RBBCar_id").val(); 
+		 var db_ref_path = "/line-printer-bot/"+cupsName; // firebase 資料庫基本路徑  
+         $("#tbody").empty();  
+		 $("#thead").empty()				
+		 $("#tbody").empty();		   
+		 db.ref(db_ref_path).on("value", function(snapshot){	
+		   if (snapshot.val()){	
+		    $("#thead").append( //新增表格資料
+			  "<tr><th>主機名稱</th><th>連線 AP</th><th>印表機名稱</th><th>CUPS 網址</th></tr>" 
+            )  			  													   
+            count = 0;	                  			
+            snapshot.forEach(function(item){ 
+			 console.log(item.val()) 			  					
+			 result[item.key]=item.val();
+			 count=count+1;							                    
+            })                    
+            dataDisplay(result);                                                                 
+           }
+          else {
+			alert("資料庫不存在")
+		  }
+		 });	               
+        }
 		
 		function initializeLiff(myLiffId){
             liff
@@ -61,9 +90,18 @@
 		       <input id = "deviceid" type='text' name='deviceid' placeholder="輸入裝置名稱"/>
 		       <input id = "useid" type='text' name='userid' hidden/>
 		       <input type='submit' value='RBBCar 註冊'/>
-		      </form> 
-		      <h3>{{data}}</h3>		 
-		     
+		      </form>
+		       <h3>{{data}}</h3>		
+		      <div id="RBBCar_query">
+				<input id="RBBCar_id" type='text' size="10" name='RBBCar_id' value='cups0001' />
+                <input id="RBBCar_btn" type='button' value='送出' onclick='processFormData();' />				  
+			  </div>
+			  <p></p>                       
+             <table id="mainTable" class="display hover" border="1">	    
+              <thead id="thead" align="center">               
+              </thead> 
+              <tbody id="tbody" align="center">		 
+              </tbody> 	     
 		    </div>		 
 	</body>
 	
