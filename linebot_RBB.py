@@ -17,8 +17,8 @@ import configparser
 import paho.mqtt.client as mqtt
 
 def loadINI():
-    cupspath = os.path.dirname(os.path.realpath(__file__))
-    cfgpath = os.path.join(cupspath, 'linebot_RBBCar.conf')
+    RBBCarpath = os.path.dirname(os.path.realpath(__file__))
+    cfgpath = os.path.join(RBBCarpath, 'linebot_RBBCar.conf')
     # 創建對象
     config = configparser.ConfigParser()
    # 讀取INI
@@ -45,8 +45,8 @@ app = Flask(__name__)
 @app.route('/',methods=['GET','POST'])    
 def video_cam():
   global userid
-  cupspath = os.path.dirname(os.path.realpath(__file__))
-  cfgpath = os.path.join(cupspath, 'linebot_RBBCar.conf')
+  RBBCarath = os.path.dirname(os.path.realpath(__file__))
+  cfgpath = os.path.join(RBBCarath, 'linebot_RBBCar.conf')
    # 創建對象
   config = configparser.ConfigParser()
    # 讀取INI
@@ -64,8 +64,8 @@ def video_cam():
 @app.route('/register',methods=['GET','POST'])    
 def register(): 
    global userid
-   cupspath = os.path.dirname(os.path.realpath(__file__))
-   cfgpath = os.path.join(cupspath, 'linebot_RBBCar.conf')
+   RBBCarpath = os.path.dirname(os.path.realpath(__file__))
+   cfgpath = os.path.join(RBBCarpath, 'linebot_RBBCar.conf')
    # 創建對象
    config = configparser.ConfigParser()
    # 讀取INI
@@ -120,8 +120,8 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
    global userid
-   cupspath = os.path.dirname(os.path.realpath(__file__))
-   cfgpath = os.path.join(cupspath, 'linebot_RBBCar.conf')
+   RBBCarpath = os.path.dirname(os.path.realpath(__file__))
+   cfgpath = os.path.join(RBBCarpath, 'linebot_RBBCar.conf')
      # 創建對象
    config = configparser.ConfigParser()
      # 讀取INI
