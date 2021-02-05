@@ -38,8 +38,8 @@
              });		
 		});
 		 function processFormData(){
-		 var cupsName = $("#RBBCar_id").val(); 
-		 var db_ref_path = "/line-printer-bot/"+cupsName; // firebase 資料庫基本路徑  
+		 var RBBCarName = $("#RBBCar_id").val(); 
+		 var db_ref_path = "/RBBCar_server/"+RBBCarName; // firebase 資料庫基本路徑  
          $("#tbody").empty();  
 		 $("#thead").empty()				
 		 $("#tbody").empty();		   
@@ -93,7 +93,7 @@
 		      </form>
 		       <h3>{{data}}</h3>		
 		      <div id="RBBCar_query">
-				<input id="RBBCar_id" type='text' size="10" name='RBBCar_id' value='cups0001' />
+				<input id="RBBCar_id" type='text' size="10" name='RBBCar_id' value='RBBCar0001' />
                 <input id="RBBCar_btn" type='button' value='送出' onclick='processFormData();' />				  
 			  </div>
 			  <p></p>                       
