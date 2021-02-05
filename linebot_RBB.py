@@ -158,17 +158,15 @@ def on_connect(client, userdata, flags, rc):
   print("Connected with result code "+str(rc))
 
 def on_message(client, userdata, msg): # 收到訂閱訊息的處理    
-  print(msg.topic + " " + msg.payload.decode())       
-  if msg.payload.decode() == 'finish': 
-    print("receive finish message")      
-    return render_template("index.html", data = "檔案列印完成....")  
+  print(msg.topic + " " + msg.payload.decode())
 
+client = mqtt.Client()  
+client.on_connect = on_connect  
+client.on_message = on_message  
+client.connect(iniContent[3], iniContent[4]) 
+client.loop_start()   
 if __name__ == "__main__": 
- client = mqtt.Client()  
- client.on_connect = on_connect  
- client.on_message = on_message  
- client.connect(iniContent[3], iniContent[4]) 
- client.loop_start()   
- app.run(debug=True, use_reloader=False, host='0.0.0.0',port=8080)
+
+ app.run(debug=True, host='0.0.0.0',port=8080)
  
      
