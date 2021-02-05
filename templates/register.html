@@ -33,6 +33,18 @@
 			//console.log(userid)
 			result=[];			
 		});
+		function dataDisplay(result){						                
+           var hostname = result['hostname']					   
+		   var ap = result['ap']
+		   var queuename = result['queuename']
+		   var ngrok_url = result['ngrok_url']	  		  						    						    
+		    $("#tbody").append( //新增表格資料
+		     "<tr><td>" + hostname + "</td>" +
+		      "<td>" + ap + "</td>" +
+		      "<td>" + queuename + "</td>" +
+		      "<td><a href=http://" + ngrok_url+ ">連結</a></td></tr>" 
+		    )		          
+         } 
 		 function processFormData(){
 		 var RBBCarName = $("#RBBCar_id").val(); 
 		 var db_ref_path = "/RBBCar_server/"+RBBCarName; // firebase 資料庫基本路徑  
