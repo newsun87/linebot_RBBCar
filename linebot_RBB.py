@@ -45,6 +45,12 @@ app = Flask(__name__)
 @app.route('/',methods=['GET','POST'])    
 def video_cam():
   global userid
+  cupspath = os.path.dirname(os.path.realpath(__file__))
+  cfgpath = os.path.join(cupspath, 'linebot_RBBCar.conf')
+   # 創建對象
+  config = configparser.ConfigParser()
+   # 讀取INI
+  config.read(cfgpath, encoding='utf-8')  
   if request.method=='GET':
     return render_template('index.html')
   else:        
