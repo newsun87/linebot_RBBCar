@@ -18,9 +18,9 @@
 		 //你的liff app ID, 例如 --> 0000000000-spPeRmAn
         var YourLiffAppId = '1654118646-qDxmMVz6';
 		var firebaseConfig = {
-				apiKey: "AIzaSyAG501H9o5I_q-2lLKei5aDUBsJQrigxmQ",
-				authDomain: "line-bot-test-77a80.firebaseapp.com",
-				databaseURL: "https://line-bot-test-77a80.firebaseio.com"					
+			apiKey: "AIzaSyAG501H9o5I_q-2lLKei5aDUBsJQrigxmQ",
+			authDomain: "line-bot-test-77a80.firebaseapp.com",
+			databaseURL: "https://line-bot-test-77a80.firebaseio.com"					
         };
         firebase.initializeApp(firebaseConfig);        
         var db = firebase.database();
@@ -31,11 +31,7 @@
 			//userid = context.userId;
 			//$('input[name="userid"]').val(userid)
 			//console.log(userid)
-			$('#ButtonCUPSQuery').click(function (){ // 查詢用戶報到資料				
-				//$("#mainTable").show();
-				//$("#uploadfile").hide();			 
-				//$("#cpus_query").show();                          
-             });		
+			result=[];			
 		});
 		 function processFormData(){
 		 var RBBCarName = $("#RBBCar_id").val(); 
@@ -46,7 +42,7 @@
 		 db.ref(db_ref_path).on("value", function(snapshot){	
 		   if (snapshot.val()){	
 		    $("#thead").append( //新增表格資料
-			  "<tr><th>主機名稱</th><th>連線 AP</th><th>RBBCar名稱</th><th>RBBCar CAM 網址</th></tr>" 
+			  "<tr><th>主機名稱</th><th>連線 AP</th><th>裝置代號</th><th> CAM 網址</th></tr>" 
             )  			  													   
             count = 0;	                  			
             snapshot.forEach(function(item){ 
