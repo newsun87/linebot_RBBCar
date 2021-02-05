@@ -19,12 +19,8 @@
 		var YourLiffAppId = '1654118646-GK30qepb'	      
         $(document).ready(function (){	
 			//初始 LIFF SDK
-           initializeLiff(YourLiffAppId); 
-           context = liff.getContext();
-           userid = context.userId;
-		   $('input[name="userid"]').val(userid);
-		    console.log(userid);        			
-		          
+          initializeLiff(YourLiffAppId); 
+          context = liff.getContext();	          
 			$('#Button_w').click(function (){ // 查詢用戶報到資料					
 				//alert("前進")
 				var data={"ctrl":"w"};
