@@ -31,7 +31,8 @@
 			//userid = context.userId;
 			//$('input[name="userid"]').val(userid)
 			//console.log(userid)
-			result=[];			
+			result=[];	
+			processFormData()		
 		});
 		function dataDisplay(result){						                
            var hostname = result['hostname']					   
@@ -101,7 +102,7 @@
 		      </form>
 		       <h3>{{data}}</h3>		
 		      <div id="RBBCar_query">
-				<input id="RBBCar_id" type='text' size="10" name='RBBCar_id' value='RBBCar0001' />
+				<input id="RBBCar_id" type='text' size="10" name='RBBCar_id' value={{data}} />
                 <input id="RBBCar_btn" type='button' value='送出' onclick='processFormData();' />				  
 			  </div>
 			  <p></p>                       

@@ -51,7 +51,8 @@ def control():
    # 創建對象
   config = configparser.ConfigParser()
    # 讀取INI
-  config.read(cfgpath, encoding='utf-8')  
+  config.read(cfgpath, encoding='utf-8')
+  RBBCar_num = config.get('device', userid)   
   if request.method=='GET':
     return render_template('index.html')
   else:        
