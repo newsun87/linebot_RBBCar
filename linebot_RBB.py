@@ -52,7 +52,7 @@ def control():
   config = configparser.ConfigParser()
    # 讀取INI
   config.read(cfgpath, encoding='utf-8')
-  RBBCar_num = config.get('device', userid)   
+  #RBBCar_num = config.get('device', userid)   
   if request.method=='GET':
     return render_template('index.html')
   else:        
@@ -73,7 +73,8 @@ def register():
    # 讀取INI
    config.read(cfgpath, encoding='utf-8')  
    if request.method=='GET':
-      return render_template('register.html')
+      RBBCar_num = config.get('device', userid)       
+      return render_template('register.html', data = RBBCar_num)
    else:
      device_input=request.form['deviceid']
      #userid=request.form['userid']  
