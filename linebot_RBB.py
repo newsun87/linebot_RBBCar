@@ -54,6 +54,7 @@ app = Flask(__name__)
 @app.route('/',methods=['GET','POST'])    
 def control():
   global userid
+  userid = 'ubf2b9f4188d45848fb4697d41c962591'
   print('userid', userid)  
   RBBCarath = os.path.dirname(os.path.realpath(__file__))
   cfgpath = os.path.join(RBBCarath, 'linebot_RBBCar.conf')
