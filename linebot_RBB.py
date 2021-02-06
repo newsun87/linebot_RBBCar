@@ -20,7 +20,10 @@ from firebase_admin import credentials
 from firebase_admin import db
 import paho.mqtt.client as mqtt
 
-
+#目前所在絕對路徑
+basepath = os.path.dirname(__file__)
+print(basepath)
+userid = ""
 def loadINI():
     RBBCarpath = os.path.dirname(os.path.realpath(__file__))
     cfgpath = os.path.join(RBBCarpath, 'linebot_RBBCar.conf')
@@ -42,10 +45,7 @@ def loadINI():
     MQTT_Broker_port = int(config.get('MQTT_broker', 'port'))
     return ([linebot_access_token , linebot_secret, device_list_str, MQTT_Broker_url, MQTT_Broker_port])
 
-#目前所在絕對路徑
-basepath = os.path.dirname(__file__)
-print(basepath)
-userid = ""
+
 iniContent = loadINI()
 print(iniContent)
 
