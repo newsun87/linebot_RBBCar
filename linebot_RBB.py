@@ -55,9 +55,7 @@ def control():
   firebase_admin.initialize_app(cred, {
       'databaseURL' : 'https://line-bot-test-77a80.firebaseio.com/'    
     })
-  ref = db.reference('/') # 參考路徑
-  cam_url = ref.child('RBBCar_server/ngrok_url').get()
-  print('cam_url', cam_url)
+  ref = db.reference('/') # 參考路徑   
   RBBCarath = os.path.dirname(os.path.realpath(__file__))
   cfgpath = os.path.join(RBBCarath, 'linebot_RBBCar.conf')
    # 創建對象
@@ -66,6 +64,8 @@ def control():
   config.read(cfgpath, encoding='utf-8')
   RBBCar_num = config.get('device', userid)
   print('RBBCar_num', RBBCar_num)   
+  cam_url = ref.child('RBBCar_server/" + RBBCar_num + 'ngrok_url').get() 
+  print('cam_url', cam_url) 
   if request.method=='GET':
     return render_template('index.html')
   else:        
