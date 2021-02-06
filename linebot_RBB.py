@@ -64,7 +64,7 @@ def control():
   config.read(cfgpath, encoding='utf-8')
   RBBCar_num = config.get('device', userid)
   print('RBBCar_num', RBBCar_num)   
-  cam_url = ref.child('RBBCar_server/' + RBBCar_num + 'ngrok_url').get() 
+  cam_url = ref.child('RBBCar_server/' + RBBCar_num + '/ngrok_url').get() 
   print('cam_url', cam_url) 
   if request.method=='GET':
     return render_template('index.html')
