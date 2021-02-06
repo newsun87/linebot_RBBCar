@@ -96,7 +96,7 @@ def register():
        config.write(open(cfgpath, "w"))
        break 
       else:
-       data = ['RBBCar 裝置不存在....',""]              
+       data = ['RBBCar 裝置不存在....',"no"]              
      return render_template("register.html", data = data)       
 
 @app.route('/goal',methods=['GET','POST'])    
