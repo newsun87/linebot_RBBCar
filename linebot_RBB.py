@@ -54,16 +54,16 @@ app = Flask(__name__)
 @app.route('/',methods=['GET','POST'])    
 def control():
   global userid
-  time.sleep(1)
-  userid = config.get('device', 'currentuser')
-  #userid = 'ubf2b9f4188d45848fb4697d41c962591'
-  print('userid', userid)  
+  time.sleep(1)    
   RBBCarath = os.path.dirname(os.path.realpath(__file__))
   cfgpath = os.path.join(RBBCarath, 'linebot_RBBCar.conf')
    # 創建對象
   config = configparser.ConfigParser()
    # 讀取INI
   config.read(cfgpath, encoding='utf-8')
+  userid = config.get('device', 'currentuser')
+  print('userid', userid) 
+  #userid = 'ubf2b9f4188d45848fb4697d41c962591'
   RBBCar_num = config.get('device', userid)  
   print('RBBCar_num', RBBCar_num)
   ref = db.reference('/') # 參考路徑      
