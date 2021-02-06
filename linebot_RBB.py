@@ -91,13 +91,13 @@ def register():
      for item in device_list:
       if item == device_input:
        print(item,device_input)
-       result = '註冊成功....'       
+       data = ['註冊成功....',""]              
        config.set('device', userid, device_input)      
        config.write(open(cfgpath, "w"))
        break 
       else:
-       result = 'RBBCar 裝置不存在....'               
-     return render_template("register.html", data = result)       
+       data = ['RBBCar 裝置不存在....',""]              
+     return render_template("register.html", data = data)       
 
 @app.route('/goal',methods=['GET','POST'])    
 def goal():
