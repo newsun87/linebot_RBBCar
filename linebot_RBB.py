@@ -67,10 +67,10 @@ def control():
   RBBCar_num = config.get('device', userid)  
   print('RBBCar_num', RBBCar_num)
   ref = db.reference('/') # 參考路徑      
-  cam_url = ref.child('RBBCar_server/' + RBBCar_num + '/ngrok_url').get() 
+  cam_url = ref.child('RBBCar_server/' + RBBCar_num + '/ngrok_url').get()+'/?action=stream' 
   print('cam_url', cam_url) 
   if request.method=='GET':
-    return render_template('index.html')
+    return render_template('index.html', data = cam_url)
   else:        
     receive_json_obj = request.get_json() # 取得 json 資料物件 
     ctrl_msg = receive_json_obj['ctrl']

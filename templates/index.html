@@ -21,7 +21,7 @@
 			//初始 LIFF SDK
           initializeLiff(YourLiffAppId); 
           context = liff.getContext();	          
-			$('#Button_w').click(function (){ // 查詢用戶報到資料					
+		  $('#Button_w').click(function (){ // 查詢用戶報到資料					
 				//alert("前進")
 				var data={"ctrl":"w"};
 				$.ajax({
@@ -118,7 +118,7 @@
           <div id="MainDiv" class="col-md-6" style="margin:5px">
 			  <h3>攝影機視框</h3>
 			    <iframe src="" name="iframe_a" width="90%" height="300px" title="Show Cam"></iframe> 
-			    <p><a href="https://7a7f30a26259.ngrok.io/?action=stream" target="iframe_a" >W3Schools.com</a></p>
+			    <p><a href={{data}} target="iframe_a" >W3Schools.com</a></p>
        
               <div id="RBBCar_control">				
                 <button id="Button_w">前進</button>	 			
