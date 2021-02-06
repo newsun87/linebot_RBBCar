@@ -53,8 +53,7 @@ app = Flask(__name__)
 
 @app.route('/',methods=['GET','POST'])    
 def control():
-  global userid
-  time.sleep(1)    
+  global userid     
   RBBCarath = os.path.dirname(os.path.realpath(__file__))
   cfgpath = os.path.join(RBBCarath, 'linebot_RBBCar.conf')
    # 創建對象
