@@ -91,7 +91,7 @@ def register():
      for item in device_list:
       if item == device_input:
        print(item,device_input)
-       data = ['註冊成功....',""]              
+       data = ['註冊成功....', device_input]              
        config.set('device', userid, device_input)      
        config.write(open(cfgpath, "w"))
        break 
