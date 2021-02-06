@@ -34,8 +34,7 @@ def loadINI():
     cred = credentials.Certificate("serviceAccount.json")
     firebase_admin.initialize_app(cred, {
       'databaseURL' : 'https://line-bot-test-77a80.firebaseio.com/'    
-    })
-    ref = db.reference('/') # 參考路徑       
+    })        
     linebot_access_token = config.get('common', 'linebot_access_token')
     linebot_secret = config.get('common', 'linebot_secret')
     device_list_str = config['common']['RBBCar_id_list']
@@ -63,7 +62,8 @@ def control():
    # 讀取INI
   config.read(cfgpath, encoding='utf-8')
   RBBCar_num = config.get('device', userid)
-  print('RBBCar_num', RBBCar_num)   
+  print('RBBCar_num', RBBCar_num)
+  ref = db.reference('/') # 參考路徑      
   cam_url = ref.child('RBBCar_server/' + RBBCar_num + '/ngrok_url').get() 
   print('cam_url', cam_url) 
   if request.method=='GET':
