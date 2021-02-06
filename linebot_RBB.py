@@ -55,6 +55,7 @@ app = Flask(__name__)
 def control():
   global userid
   time.sleep(1)
+  userid = config.get('device', currentuser)
   #userid = 'ubf2b9f4188d45848fb4697d41c962591'
   print('userid', userid)  
   RBBCarath = os.path.dirname(os.path.realpath(__file__))
@@ -155,9 +156,11 @@ def handle_message(event):
    print('userid', userid )
    if config.has_option('device',userid): 
      device_num = config.get('device', userid)
+     config.set('device', 'currentuser', userid)
+     config.write(open("linebot_RBBCar.conf", "w"))
    else:
      config.set('device', userid, " ")
-     config.write(open("linebot_cups.conf", "w"))
+     config.write(open("linebot_RBBCar.conf", "w"))
      device_num = config.get('device', userid)
    if event.message.text == 'control': 
      message = TextSendMessage(text = '請點選 https://liff.line.me/1654118646-GK30qepb')   
