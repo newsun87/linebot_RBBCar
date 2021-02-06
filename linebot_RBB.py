@@ -67,7 +67,7 @@ def control():
   RBBCar_num = config.get('device', userid)  
   print('RBBCar_num', RBBCar_num)
   ref = db.reference('/') # 參考路徑      
-  cam_url = ref.child('RBBCar_server/' + RBBCar_num + '/ngrok_url').get()+'/?action=stream' 
+  cam_url = ref.child('RBBCar_server/' + RBBCar_num + '/ngrok_url').get()
   print('cam_url', cam_url) 
   if request.method=='GET':
     return render_template('index.html', data = cam_url)
