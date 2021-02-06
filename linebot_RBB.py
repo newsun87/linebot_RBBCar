@@ -45,6 +45,7 @@ app = Flask(__name__)
 @app.route('/',methods=['GET','POST'])    
 def control():
   global userid
+  time.sleep(1)
   print('userid', userid)
   RBBCarath = os.path.dirname(os.path.realpath(__file__))
   cfgpath = os.path.join(RBBCarath, 'linebot_RBBCar.conf')
@@ -59,13 +60,14 @@ def control():
     receive_json_obj = request.get_json() # 取得 json 資料物件 
     ctrl_msg = receive_json_obj['ctrl']
     print('ctrl_msg', ctrl_msg)
-    #RBBCar_num = config.get('device', userid) 
-    client.publish("RBBCar/control/RBBCar0001", ctrl_msg, qos=1)
+    RBBCar_num = config.get('device', userid) 
+    client.publish("RBBCar/control/" + RBBCar_num, ctrl_msg, qos=1)
     return ctrl_msg # 回傳 json 資料字串
  
 @app.route('/register',methods=['GET','POST'])    
 def register(): 
    global userid
+   time.sleep(1)
    RBBCarpath = os.path.dirname(os.path.realpath(__file__))
    cfgpath = os.path.join(RBBCarpath, 'linebot_RBBCar.conf')
    # 創建對象
