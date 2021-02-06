@@ -100,9 +100,9 @@
 		       <input id = "useid" type='text' name='userid' hidden/>
 		       <input type='submit' value='RBBCar 註冊'/>
 		      </form>
-		       <h3>{{data}}</h3>		
+		       <h3>{{data[0]}}</h3>		
 		      <div id="RBBCar_query">
-				<input id="RBBCar_id" type='text' size="10" name='RBBCar_id' value={{data}} />
+				<input id="RBBCar_id" type='text' size="10" name='RBBCar_id' value={{data[1]}} hidden />
                 <input id="RBBCar_btn" type='button' value='送出' onclick='processFormData();' />				  
 			  </div>
 			  <p></p>                       

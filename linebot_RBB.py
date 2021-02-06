@@ -73,8 +73,13 @@ def register():
    # 讀取INI
    config.read(cfgpath, encoding='utf-8')  
    if request.method=='GET':
-      RBBCar_num = config.get('device', userid)       
-      return render_template('register.html', data = RBBCar_num)
+      RBBCar_num = config.get('device', userid) 
+      if RBBCar_num != ' ':
+        data = ['註冊裝置資訊',RBBCar_num]        
+        return render_template('register.html', data = data )
+      else:
+        data = ['尚未註冊', ""]       
+        return render_template('register.html', data = data )
    else:
      device_input=request.form['deviceid']
      #userid=request.form['userid']  
