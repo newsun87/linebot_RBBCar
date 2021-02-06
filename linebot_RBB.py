@@ -55,7 +55,7 @@ app = Flask(__name__)
 def control():
   global userid
   time.sleep(1)
-  userid = config.get('device', currentuser)
+  userid = config.get('device', 'currentuser')
   #userid = 'ubf2b9f4188d45848fb4697d41c962591'
   print('userid', userid)  
   RBBCarath = os.path.dirname(os.path.realpath(__file__))
