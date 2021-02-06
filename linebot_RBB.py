@@ -29,7 +29,13 @@ def loadINI():
    # 讀取INI
     config.read(cfgpath, encoding='utf-8')     
     # 取得所有sections
-    sections = config.sections()     
+    sections = config.sections() 
+    #取得 firebase 通行憑證
+    cred = credentials.Certificate("serviceAccount.json")
+    firebase_admin.initialize_app(cred, {
+      'databaseURL' : 'https://line-bot-test-77a80.firebaseio.com/'    
+    })
+    ref = db.reference('/') # 參考路徑       
     linebot_access_token = config.get('common', 'linebot_access_token')
     linebot_secret = config.get('common', 'linebot_secret')
     device_list_str = config['common']['RBBCar_id_list']
@@ -49,13 +55,7 @@ app = Flask(__name__)
 @app.route('/',methods=['GET','POST'])    
 def control():
   global userid
-  print('userid', userid)
-  #取得 firebase 通行憑證
-  cred = credentials.Certificate("serviceAccount.json")
-  firebase_admin.initialize_app(cred, {
-      'databaseURL' : 'https://line-bot-test-77a80.firebaseio.com/'    
-    })
-  ref = db.reference('/') # 參考路徑   
+  print('userid', userid)  
   RBBCarath = os.path.dirname(os.path.realpath(__file__))
   cfgpath = os.path.join(RBBCarath, 'linebot_RBBCar.conf')
    # 創建對象
