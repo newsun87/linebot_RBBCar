@@ -61,7 +61,7 @@ def control():
   config = configparser.ConfigParser()
    # 讀取INI
   config.read(cfgpath, encoding='utf-8')
-  RBBCar_num = config.get('device', userid)
+  RBBCar_num = config.get('device', userid)  
   print('RBBCar_num', RBBCar_num)
   ref = db.reference('/') # 參考路徑      
   cam_url = ref.child('RBBCar_server/' + RBBCar_num + '/ngrok_url').get() 
@@ -72,6 +72,7 @@ def control():
     receive_json_obj = request.get_json() # 取得 json 資料物件 
     ctrl_msg = receive_json_obj['ctrl']
     print('ctrl_msg', ctrl_msg)
+    RBBCar_num = config.get('device', userid)
     print('RBBCar_num', RBBCar_num) 
     print('MQTT topic', "RBBCar/control/"+ RBBCar_num)    
     client.publish("RBBCar/control/"+ RBBCar_num, ctrl_msg, qos=1)
