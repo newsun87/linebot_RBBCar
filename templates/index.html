@@ -9,12 +9,19 @@
     <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script> 
      <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
        <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>       
-     <style>
+     <style type="text/css">
        #MainDiv button {
-           margin:3px;
-       }
+         margin:3px;
+       }    
+      .centerDiv
+       {
+         width: 60%;
+         height:200px;
+         margin: 0 auto;
+         background-color:#FFA500 ;
+       }  
      </style>
-     <script> 
+    <script> 
 		var YourLiffAppId = '1654118646-GK30qepb'	      
         $(document).ready(function (){	
 			//初始 LIFF SDK
@@ -117,8 +124,8 @@
 		  <h3>攝影機視框</h3>
 		    <iframe src="" name="iframe_a" width="100%" height="250px" title="Show Cam"></iframe> 
 		      <p><a href={{data}} target="iframe_a" >顯示畫面</a></p> 
-		  <div id="RBBCar_control">	
-           <table style="width:100%; float:center">
+		  <div id="RBBCar_control" class="centerDiv">	
+           <table width="100%" border=1>
             <tr>
              <td width="30%"> </td> 
              <td><button id="Button_w" style="width:30%;height:30px;border:3px;orange double;">前進</button></td> 
