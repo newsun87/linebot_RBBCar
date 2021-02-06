@@ -70,7 +70,7 @@ def control():
   cam_url = ref.child('RBBCar_server/' + RBBCar_num + '/ngrok_url').get()
   print('cam_url', "https://"+cam_url) 
   if request.method=='GET':
-    return render_template('index.html', data = cam_url)
+    return render_template('index.html', data = "https://"+cam_url)
   else:        
     receive_json_obj = request.get_json() # 取得 json 資料物件 
     ctrl_msg = receive_json_obj['ctrl']
