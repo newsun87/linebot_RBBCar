@@ -161,24 +161,34 @@ def handle_message(event):
      config.set('device', userid, " ")
      config.write(open("linebot_RBBCar.conf", "w"))
      device_num = config.get('device', userid)
+   # 接收用戶的命令  
    if event.message.text == 'control': 
-     message = TextSendMessage(text = '請點選 https://liff.line.me/1654118646-GK30qepb')   
-   elif event.message.text == 'register': 
-     message = TextSendMessage(text = '請點選 https://liff.line.me/1654118646-qDxmMVz6')     
-   elif event.message.text == 'w':         
      if device_num == '':
-       message = TextSendMessage(text = '未註冊列印裝置....')
+       message = TextSendMessage(text = '未註冊 RBBCar 裝置....')
      else:  
-       message = printer_template()     
-   elif event.message.text == 'page':
-      if device_num == '':
-        message = TextSendMessage(text = '未註冊列印裝置....')
-      else:
-        message = TextSendMessage(text = 'https://liff.line.me/1654118646-GK30qepb')      
+       message = control_template()      
+   elif event.message.text == 'register': 
+     message = TextSendMessage(text = '請點選 https://liff.line.me/1654118646-qDxmMVz6')       
    else:
      message = TextSendMessage(text = '我不懂你的意思...')
    line_bot_api.reply_message(event.reply_token, message)
-
+   
+def control_template():
+    buttons_template_message = TemplateSendMessage(
+         alt_text = '我是系統設定按鈕選單模板',
+         template = ButtonsTemplate(
+            thumbnail_image_url = 'https://i.imgur.com/oimUK1g.png', 
+            title = 'RBBCar操控選單',  # 你的標題名稱
+            text = '開啟網頁連結，顯示操控介面',  # 你要問的問題，或是文字敘述            
+            actions = [ # action 最多只能4個喔！
+                URIAction(
+                    label = '網頁連結', # 在按鈕模板上顯示的名稱
+                    uri = "https://liff.line.me/1654118646-GK30qepb"  
+                )   
+            ]
+         )
+        )
+    return buttons_template_message
 # paho callbacks
 def on_connect(client, userdata, flags, rc):
   print("Connected with result code "+str(rc))
